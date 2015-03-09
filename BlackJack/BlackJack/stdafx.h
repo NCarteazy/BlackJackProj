@@ -7,12 +7,14 @@
 
 #include "targetver.h"
 #include <stdlib.h>
-#include <stack>
+#include <queue>
 #include "card.h"
 #include "Deck.h"
 #include <stdio.h>
 #include <tchar.h>
 #include <iomanip>
+#include <iostream>
+#include <string>
 
 
 

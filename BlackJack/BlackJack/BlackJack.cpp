@@ -2,15 +2,16 @@
 //
 
 #include "stdafx.h"
-#include <iostream>
 using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
-	
-	cout << "Hello World" << endl;
 	Deck a;
-	cout << a;
-
+	Deck b;
+	cout << a << b << endl;
+	if (a.Deck_Check())
+		cout << "Ayy" << endl;
+	else
+		cout << "Nayy" << endl;
 	cin.ignore();
 	return 0;
 }

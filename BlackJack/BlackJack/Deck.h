@@ -10,10 +10,12 @@ class Deck
 public:
 	Deck();
 	friend ostream& operator << (ostream& out, Deck h);
+	bool Deck_Check();
 private:
 	int key;
+	int CardCount;
 	card * Cards;
-	stack<card> Stacked;
+	queue<card> Queued;
 	void create_cards();
 	void fill_deck();
 };
