@@ -7,15 +7,26 @@ using namespace std;
 
 class card
 {
+private:
+	char Value; //Value of card
+	string ValueName; //for display
+	bool isSet; //has card been created?
 public:
+	card();
+	
+	void setIsSet(bool isSetValue);
+	bool getIsSet(void);
+
+	void setValue(char isValue);
+	char getValue(void);
+
+	void setValueName(string isValueName);
+	string getValueName(void);
+	
 	friend ostream& operator << (ostream& out, card h);
 	friend bool operator!= (const card L, const card R);
-	char Suit; //Suit of card
-	char Value; //Value of card
-	string SuitName;
-	string ValueName;
-	bool set;
-	card();
+	card& operator= (const card& RHS);
+	
 	
 };
 

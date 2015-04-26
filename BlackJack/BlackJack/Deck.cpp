@@ -8,7 +8,7 @@ Deck::Deck()
 	Cards = new card[52];
 	for (int i = 0; i < 52; i++)
 	{
-		Cards[i].set = false;
+		Cards[i].setIsSet(false);
 	}
 
 	create_cards();
@@ -50,24 +50,16 @@ void Deck::create_cards()
 	for (int i = 0; i < 52; i++, Scount++)
 	{
 		card *temp = new card;
-		if (i % 4 == 0){
-			Vcount++;
-			temp->Suit = 'H';
-		}
-		else if (i%4 == 1)
-			temp->Suit = 'S';
-		else if (i%4 == 2)
-			temp->Suit = 'D';
-		else if (i%4 == 3)
-			temp->Suit = 'C';
-		temp->Value = Vcount + 48;
+		temp->setValue(Vcount);
 
 		//while we are not looking at an empty card
 		//slot, look for a new slot
-		while (Cards[key].set) 
+		while (Cards[key].getIsSet()) 
 			key = rand() % 52;
+
 		Cards[key] = *temp;
-		Cards[key].set = true;
+		Cards[key].setIsSet(true);
+		delete temp;
 	}
 }
 

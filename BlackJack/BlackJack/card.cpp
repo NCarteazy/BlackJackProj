@@ -3,47 +3,96 @@ using namespace std;
 
 card::card()
 	{
-		Suit = 'N';
 		Value = 'N';
-		SuitName = "N";
 		ValueName = "N";
-		set = false;
+		isSet = false;
 	}
 
+void card::setIsSet(bool isSetValue)
+{	isSet = isSetValue;}
+
+bool card::getIsSet(void)
+{	return isSet;}
+
+void card::setValue(int isValue)
+{
+	Value = (isValue%13) + '0';
+}
+char card::getValue(void)
+{
+	return Value;
+}
+
+void card::setValueName(string isValueName)
+{
+	ValueName = isValueName;
+}
+string card::getValueName(void)
+{
+	return ValueName;
+}
 
 ostream& operator << (ostream& ous, card c)
 {
-	switch (Suit)
-	{
-	case 'D':
-		SuitName = "Diamonds";
-		break;
-	case 'S':
-		SuitName = "Suits";
-		break;
-	case 'H':
-		SuitName = "Hearts";
-		break;
-	case 'C':
-		SuitName = "Clubs";
-		break;
-	default:
-		SuitName = "Error";
-		break;
-	}
-
-	switch (Value)
+	switch (c.Value)
 	{
 	case '1':
+		c.ValueName = "A";
+		break;
+	case '2':
+		c.ValueName = "2";
+		break;
+	case '3':
+		c.ValueName = "3";
+		break;
+	case '4':
+		c.ValueName = "4";
+		break;
+	case '5':
+		c.ValueName = "5";
+		break;
+	case '6':
+		c.ValueName = "6";
+		break;
+	case '7':
+		c.ValueName = "7";
+		break;
+	case '8':
+		c.ValueName = "8";
+		break;
+	case '9':
+		c.ValueName = "9";
+		break;
+	case ':':
+		c.ValueName = "10";
+		break;
+	case ';':
+		c.ValueName = "J";
+		break;
+	case '<':
+		c.ValueName = "Q";
+		break;
+	case '0':
+		c.ValueName = "K";
+		break;
+	default:
+		c.ValueName = "Problem";
 	}
 	
-	ous << c.Suit << setw(3) << c.Value << setw(3) << c.set;
+	ous << c.ValueName << setw(3) << c.Value;
 	return ous;
 }
 
 bool operator != (const card L, const card R)
 {
-	if (L.Suit == R.Suit && L.Value == R.Value)
+	if (L.Value == R.Value)
 		return true;
 	return false;
+}
+
+card& card::operator= (const card& RHS)
+{
+	this->Value = RHS.Value;
+	this->ValueName = RHS.ValueName;
+	this->isSet = RHS.isSet;
 }
